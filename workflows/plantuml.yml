@@ -1,32 +1,32 @@
- name: Generate PlantUML Diagrams
+name: Generate PlantUML Diagrams
 
- on:
-   push:
-     branches:
-       - main
-   pull_request:
-     branches:
-       - main
-       workflow_dispatch:
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
 
- jobs:
-   generate-diagrams:
-     runs-on: ubuntu-latest
+jobs:
+  generate-diagrams:
+    runs-on: ubuntu-latest
 
-     steps:
-       - name: Checkout code
-         uses: actions/checkout@v3
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-       - name: Install PlantUML
-         run: sudo apt-get install -y plantuml
+      - name: Install PlantUML
+        run: sudo apt-get install -y plantuml
 
-       - name: Generate UML diagrams
-         run: |
-           mkdir -p output
-           plantuml -o output diagrams/*.puml
+      - name: Generate UML diagrams
+        run: |
+          mkdir -p output
+          plantuml -o output mymy/diagram.puml
 
-       - name: Upload diagrams
-         uses: actions/upload-artifact@v3
-         with:
-           name: uml-diagrams
-           path: output
+      - name: Upload diagrams
+        uses: actions/upload-artifact@v3
+        with:
+          name: uml-diagrams
+          path: output
