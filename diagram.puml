@@ -1,98 +1,13 @@
 @startuml
-class Node{
---method--
-+ Node()
-+ Node(const Node&)
-+ opeartor=(const Node&): Node&
-+ ~Node()
-.. getter ..
-+ get_value(): int
-+ get_parent(): Node*
-+ get_left(): Node*
-+ get_right(): Node
-+ get_subtree_cnt(): int
-.. setter ..
-+ set_value(int): void
-+ set_parent(Node*): void
-+ set_left(Node*): void
-+ set_right(Node*): void
-+ set_subtree_cnt(int): void
---field--
-- value_: int
-- parent_: Node*
-- left_: Node*
-- right_: Node*
-- subtree_cnt_: int
+class Animal {
+  +String name
+  +void makeSound()
 }
 
-class AvlTree{
---method--
-+ AvlTree()
-+ AvlTree(const AvlTree&)
-+ opeartor=(const AvlTree&): AvlTree&
-+ ~AvlTree()
-.. getter ..
-- get_root_(): Node*
-- get_height_(): int
-- get_depth_(): int
-- get_size_(): int
-.. setter ..
-- set_root_(Node*): void
-- set_height_(int): void
-- set_depth_(int): void
-- set_size_(int): void
-.. Else ..
-+ IsEmpty(): bool
-+ IsSame(Node*, Node*): bool
-+ InsertNode(Node*): bool
-+ EraseNode(Node*): bool
-+ FindNode(int): Node*
-
-+ SumAncestor(Node*): int
-+ SumNodeDepthAndHeight(Node*): int
-
-+ GetMinSubTree(Node*): int
-+ GetMaxSubTree(Node*):int
-
-+ GetNodeDepth(Node*): int
-+ GetNodeHeight(Node*): int
-
-+ GetNodeRank(Node* ): int
-
-- BalancingTreeFromNode(Node*): void
-- LLBalancing(Node*): void
-- LRBalancing(Node*): void
-- RRBalancing(Node*): void
-- RLBalancing(Node*): void
-
-- ModerateNodeSubTreeCntAfterBalancing(Node*, Node *): void
-- ModerateNodeSubTreeCntAfterInEr(Node*, bool): void
---field--
-- root_: Node*
-- height_ : int
-- depth_: int
-- size_: int
+class Dog {
+  +void wagTail()
+  +void makeSound()
 }
 
-class Set{
---method--
-+ Set()
-+ Set(const Set&)
-+ operator=(const Set&): Set&
-+ ~Set() 
-
-+ Find(int): Node*
-+ Insert(int): void
-+ IsEmpty(int): bool
-+ GetSize(int): int
-+ GetHeight(int): int
-+ Ancestor(int): int  
-+ Average(int): int
-+ GetRank(int): int
-+ Erase(int): void
---field--
-- avltree_: AvlTree
-}
-Node <- AvlTree
-AvlTree <- Set
+Animal <|-- Dog
 @enduml
