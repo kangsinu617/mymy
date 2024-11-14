@@ -1,0 +1,13 @@
+@startuml
+class Animal {
+  +String name
+  +void makeSound()
+}
+
+class Dog {
+  +void wagTail()
+  +void makeSound()
+}
+
+Animal <|-- Dog
+@enduml
