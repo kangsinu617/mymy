@@ -13,19 +13,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. 리포지토리 코드 체크아웃
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # 2. PlantUML 설치
       - name: Install PlantUML
         run: sudo apt-get update && sudo apt-get install -y plantuml
 
+      # 3. UML 다이어그램 생성
       - name: Generate UML diagrams
         run: |
           mkdir -p output
           plantuml -o output diagram.puml
 
+      # 4. 생성된 UML 다이어그램 업로드
       - name: Upload UML diagram
         uses: actions/upload-artifact@v3
         with:
           name: uml-diagram
           path: output
+
+      # 5. 생성된 UML 다이어그램을 리포지토리에 자동 커밋하고 푸시
+      - name: Commit UML diagrams to repository
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: 'GitHub Actions'
+          author_email: 'actions@github.com'
+          message: 'Automated update of UML diagram'
+          add: 'output/*'  # output 폴더 내 모든 파일 추가
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
