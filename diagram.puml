@@ -2,6 +2,7 @@
 class Animal {
   +String name
   +void makeSound()
+  +void sisinunu()
 }
 
 class Dog {
