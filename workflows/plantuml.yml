@@ -43,3 +43,8 @@ jobs:
           git add mymy/output/*
           git commit -m "Add generated UML diagrams"
           git push
+      - name: Debug output
+         run: |
+              ls -alh mymy/
+            plantuml -o output mymy/diagram.puml
+            ls -alh output/    
